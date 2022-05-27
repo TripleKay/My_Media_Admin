@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TrendPostController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,18 +26,21 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
     //admin
     Route::get('dashboard',[ProfileController::class,'index'])->name('dashboard');
+    Route::post('admin/update',[ProfileController::class,'updateProfile'])->name('admin#update');
+    Route::get('admin/editPassword',[ProfileController::class,'editPassword'])->name('admin#editPassword');
+    Route::post('admin/updatePassword',[ProfileController::class,'updatePassword'])->name('admin#updatePassword');
 
     //admin list
     Route::get('admin/list',[ListController::class,'index'])->name('admin#list');
 
-    //admin profile
-    // Route::get('profile',[ProfileController::class,'index'])->name('admin#profile');
-
+    //category
     Route::get('category',[CategoryController::class,'index'])->name('admin#category');
 
+    //post
     Route::get('post',[PostController::class,'index'])->name('admin#post');
 
-    Route::get('trend-post',[TrendPostController::class,'index'])->name('admin#trendPost');
+    //trend-post
+    Route::get('trendPost',[TrendPostController::class,'index'])->name('admin#trendPost');
 
 
 

@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-secondary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+      <img src="{{ asset('dist/img/avator.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">My Media Admin</span>
     </a>
 
@@ -117,7 +117,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content -->
+    <div class="container-fluid">
         @yield('content')
+
+    </div>
     <!--/. Content -->
   </div>
   <!-- /.content-wrapper -->
