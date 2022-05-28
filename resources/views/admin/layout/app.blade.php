@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="{{ route('dashboard') }}" class="nav-link active">
               <i class="nav-icon fas fa-user-circle "></i>
               <p>
                 My Profile
@@ -63,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin#list') }}" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
               <p>
                 User List
@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin#category') }}" class="nav-link">
                 <i class="nav-icon fas fa-list-ul"></i>
               <p>
                 Category
@@ -99,14 +99,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
-                Logout
-              </p>
-            </a>
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="btn btn-dark nav-link text-left text-white">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    <p>
+                      Logout
+                    </p>
+                  </button>
+              </form>
           </li>
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

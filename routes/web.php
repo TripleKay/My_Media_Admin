@@ -32,15 +32,23 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 
     //admin list
     Route::get('admin/list',[ListController::class,'index'])->name('admin#list');
+    Route::get('admin/delete/{id}',[ListController::class,'deleteAccount'])->name('admin#deleteAccount');
+    Route::post('admin/list',[ListController::class,'searchAccount'])->name('admin#searchAccount');
 
     //category
     Route::get('category',[CategoryController::class,'index'])->name('admin#category');
+    Route::post('category/create',[CategoryController::class,'createCategory'])->name('admin#createCategory');
+    Route::get('category/edit/{id}',[CategoryController::class,'editCategory'])->name('admin#editCategory');
+    Route::post('category/update/{id}',[CategoryController::class,'updateCategory'])->name('admin#updateCategory');
+
+
 
     //post
     Route::get('post',[PostController::class,'index'])->name('admin#post');
 
     //trend-post
     Route::get('trendPost',[TrendPostController::class,'index'])->name('admin#trendPost');
+
 
 
 
