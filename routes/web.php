@@ -40,8 +40,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     Route::post('category/create',[CategoryController::class,'createCategory'])->name('admin#createCategory');
     Route::get('category/edit/{id}',[CategoryController::class,'editCategory'])->name('admin#editCategory');
     Route::post('category/update/{id}',[CategoryController::class,'updateCategory'])->name('admin#updateCategory');
-
-
+    Route::get('category/delete/{id}',[CategoryController::class,'deleteCategory'])->name('admin#deleteCategory');
+    Route::post('category',[CategoryController::class,'searchCategory'])->name('admin#searchCategory');
 
     //post
     Route::get('post',[PostController::class,'index'])->name('admin#post');

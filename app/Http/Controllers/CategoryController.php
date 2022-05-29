@@ -22,7 +22,13 @@ class CategoryController extends Controller
         }
         $data = $this->requestCategoryData($request);
         Category::create($data);
-        return redirect()->back()->with(['success'=>'Category added successfully...']);
+        return back()->with(['success'=>'Category added successfully...']);
+    }
+
+    //search category
+    public function searchCategory(Request $request){
+        $data = Category::orWhere('title','like','%'.$request->search.'%')->orWhere('description','like','%'.$request->search.'%')->get();
+        return view('admin.category.index')->with(['data'=>$data]);
     }
 
     //edit category
@@ -33,7 +39,7 @@ class CategoryController extends Controller
     }
 
      //update category
-     public function updateCategory(Request $request,$id){
+    public function updateCategory(Request $request,$id){
         $validation = $this->categoryValidation($request);
         if($validation->fails()){
             return back()->withErrors($validation)->withInput();
@@ -41,6 +47,12 @@ class CategoryController extends Controller
         $data = $this->requestCategoryData($request);
         Category::where('category_id',$id)->update($data);
         return redirect()->route('admin#category')->with(['success'=>'Category updated successfully...']);
+    }
+
+    //delete category
+    public function deleteCategory($id){
+        Category::where('category_id',$id)->delete();
+        return redirect()->route('admin#category')->with(['success'=>'Category deleted successfully...']);
     }
 
     //validate check

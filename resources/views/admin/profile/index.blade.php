@@ -8,7 +8,7 @@
                     <img class="profile-user-img img-fluid img-circle" src="{{asset('dist/img/avator.jpg') }}" alt="User profile picture">
                   </div>
 
-                  <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                  <h3 class="profile-username my-3 text-center">{{ $user->name }}</h3>
 
 
                   <ul class="list-group list-group-unbordered mb-3">

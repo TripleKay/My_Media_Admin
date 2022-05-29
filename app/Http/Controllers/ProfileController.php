@@ -18,14 +18,19 @@ class ProfileController extends Controller
 
     //admin update
     public function updateProfile(Request $request){
+        //validation
         $validation = $this->updateDataValidationCheck($request);
         if($validation->fails()){
             return back()->withErrors($validation)->withInput();
         }
+
+        //get update data
         $data = $this->requestUpdateData($request);
+
+        //data update
         User::where('id',auth()->user()->id)->update($data);
 
-        return redirect()->back()->with(['success'=>'Your Profile updated...']);
+        return back()->with(['success'=>'Your Profile updated...']);
 
     }
 
@@ -36,24 +41,29 @@ class ProfileController extends Controller
 
     //update password
     public function updatePassword(Request $request){
+        //validation
         $validation = $this->updatePasswordValidationCheck($request);
         if($validation->fails()){
             return back()->withErrors($validation);
         }
+
         //get old db password
         $user = User::where('id',auth()->user()->id)->first();
         $dbOldPassword = $user->password;
 
-        //check password and update
+        //check old password correct ?
         if(Hash::check($request->oldPassword, $dbOldPassword)){
+            //get update data
             $updateData = [
                 'password' => Hash::make($request->newPassword),
                 'updated_at' => Carbon::now(),
             ];
+            //data update
             User::where('id',auth()->user()->id)->update($updateData);
+
             return redirect()->route('dashboard');
         }else{
-            return redirect()->back()->with(['fail'=>'Old Password do not Match!']);
+            return back()->with(['fail'=>'Old Password do not Match!']);
         }
     }
 

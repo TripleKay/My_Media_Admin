@@ -2,7 +2,7 @@
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
           <h4 class="mb-0">Category List</h4>
-          <form action="{{ route('admin#searchAccount') }}" class="d-flex" method="POST">
+          <form action="{{ route('admin#searchCategory') }}" class="d-flex" method="POST">
                 @csrf
               <input type="text" name="search" class="form-control mr-2" placeholder="Search">
               <button class="btn btn-primary"><i class="fas fa-search"></i></button>
@@ -37,7 +37,7 @@
                         <td>{{ $item->description }}</td>
                         <td>
                             <a href="{{ route('admin#editCategory',$item->category_id) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                            <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                            <a href="{{ route('admin#deleteCategory',$item->category_id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete...')"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
 
