@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Description</label>
-                        <textarea name="description" class="form-control" rows="3" value="{{ old('description') }}" placeholder="enter category description...."></textarea>
+                        <textarea name="description" class="form-control" rows="3" placeholder="enter category description....">{{ old('description') }}</textarea>
                         @error('description')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
