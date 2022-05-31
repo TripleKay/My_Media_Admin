@@ -2,11 +2,11 @@
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
           <h4 class="mb-0">Post List</h4>
-          {{-- <form action="{{ route('admin#searchCategory') }}" class="d-flex" method="POST">
+          <form action="{{ route('admin#searchPost') }}" class="d-flex" method="POST">
                 @csrf
               <input type="text" name="search" class="form-control mr-2" placeholder="Search">
               <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-          </form> --}}
+          </form>
       </div>
     </div>
     <!-- /.card-header -->

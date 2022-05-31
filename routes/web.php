@@ -49,6 +49,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     Route::get('post/edit/{id}',[PostController::class,'editPost'])->name('admin#editPost');
     Route::post('post/update/{id}',[PostController::class,'updatePost'])->name('admin#updatePost');
     Route::get('post/delete/{id}',[PostController::class,'deletePost'])->name('admin#deletePost');
+    Route::post('post',[PostController::class,'searchPost'])->name('admin#searchPost');
 
     //trend-post
     Route::get('trendPost',[TrendPostController::class,'index'])->name('admin#trendPost');

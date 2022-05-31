@@ -18,6 +18,16 @@ class PostController extends Controller
         return view('admin.post.index')->with(['data'=>$data,'category'=>$category]);
     }
 
+    //search post
+    public function searchPost(Request $request){
+        $category = Category::get();
+        $data = Post::orWhere('title','like','%'.$request->search.'%')
+                    ->orWhere('description','like','%'.$request->search.'%')
+                    ->get();
+        return view('admin.post.index')->with(['data'=>$data,'category'=>$category]);
+
+    }
+
     //create post
     public function createPost(Request $request){
         //validation
