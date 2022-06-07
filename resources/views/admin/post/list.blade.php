@@ -37,7 +37,7 @@
                         <td>{{ $item->post_id }}</td>
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->category_id }}</td>
-                        <td class="text-wrap">{{ $item->description }}</td>
+                        <td class="text-wrap">{{ Str::substr($item->description, 0, 100) }}.....</td>
                         <td>
                             @if ($item->image == Null)
                                 <img src="{{ asset('defaultImage/default_post.png') }}" class="rounded"  alt="" srcset="" style="width: 100px">

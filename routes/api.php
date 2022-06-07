@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ActionLogController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\AuthController;
@@ -30,6 +31,7 @@ Route::get('categoryList',[AuthController::class,'categoryList'])->middleware('a
 Route::get('post',[PostController::class,'postList']);
 Route::post('post/search',[PostController::class,'searchPost']);
 Route::post('post/detail',[PostController::class,'postDetail']);
+Route::post('post/actionLog',[ActionLogController::class,'setActionLog']);
 
 //category
 Route::get('category',[CategoryController::class,'categoryList']);
