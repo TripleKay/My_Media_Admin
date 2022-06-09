@@ -9,11 +9,6 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
               <h4 class="mb-0">Trend Post List</h4>
-              <form action="" class="d-flex" method="POST">
-                    @csrf
-                  <input type="text" name="search" class="form-control mr-2" placeholder="Search">
-                  <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-              </form>
           </div>
         </div>
         <!-- /.card-header -->
@@ -50,18 +45,19 @@
                                 @endif
                             </td>
                             <td>
-                                <i class="fas fa-eye text-info ml-2"></i>
-                                <span class="ml-2">30</span>
+                                <i class="fas fa-eye text-success ml-2"></i>
+                                <span class="ml-2">{{ $item->post_count }}</span>
                             </td>
                             <td>
-                                <a href="{{ route('admin#editPost',$item->post_id) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                                <a href="{{ route('admin#deletePost',$item->post_id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete...')"><i class="fas fa-trash"></i></a>
+                                <a href="{{ route('admin#trendDetail',$item->post_id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
                             </td>
                         </tr>
 
                   @endforeach
+
               </tbody>
             </table>
+            {{-- {{ $data->links() }} --}}
           </div>
         </div>
         <!-- /.card-body -->
