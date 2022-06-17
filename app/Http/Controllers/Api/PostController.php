@@ -33,4 +33,14 @@ class PostController extends Controller
             'post' => $data,
         ]);
     }
+
+    //related post
+    public function relatedPost(Request $request){
+        $post = Post::where('post_id',$request->postId)->first();
+        $categoryId = $post->category_id;
+        $data = Post::where('post_id','!=',$request->postId)->where('category_id',$categoryId)->get();
+        return response()->json([
+            'post'=> $data
+        ]);
+    }
 }

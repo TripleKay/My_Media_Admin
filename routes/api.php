@@ -32,6 +32,7 @@ Route::get('post',[PostController::class,'postList']);
 Route::post('post/search',[PostController::class,'searchPost']);
 Route::post('post/detail',[PostController::class,'postDetail']);
 Route::post('post/actionLog',[ActionLogController::class,'setActionLog']);
+Route::post('post/relatedPost',[PostController::class,'relatedPost']);
 
 //category
 Route::get('category',[CategoryController::class,'categoryList']);
